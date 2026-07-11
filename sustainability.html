@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sustainability | Energy Efficient New Homes | Rock Homes</title>
-<meta name="description" content="How Rock Homes builds energy-efficient new homes in Northern Ireland — fabric-first construction, responsible materials and developments planned around people.">
-<link rel="canonical" href="https://jakesloan2.github.io/rock-homes/sustainability.html">
+<title>Contact Rock Homes | New Homes Northern Ireland</title>
+<meta name="description" content="Contact Rock Homes to enquire about a development, register your interest in upcoming releases, or ask about new build homes in Northern Ireland.">
+<link rel="canonical" href="https://jakesloan2.github.io/rock-homes/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rock Homes">
-<meta property="og:title" content="Sustainability | Energy Efficient New Homes | Rock Homes">
-<meta property="og:description" content="How Rock Homes builds energy-efficient new homes in Northern Ireland — fabric-first construction, responsible materials and developments planned around people.">
-<meta property="og:url" content="https://jakesloan2.github.io/rock-homes/sustainability.html">
+<meta property="og:title" content="Contact Rock Homes | New Homes Northern Ireland">
+<meta property="og:description" content="Contact Rock Homes to enquire about a development, register your interest in upcoming releases, or ask about new build homes in Northern Ireland.">
+<meta property="og:url" content="https://jakesloan2.github.io/rock-homes/contact.html">
 <meta property="og:image" content="https://jakesloan2.github.io/rock-homes/images/rock-homes-og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index, follow">
@@ -184,8 +184,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     <ul class="nav-links" id="nav-links">
       <li><a href="about.html">About</a></li>
       <li><a href="developments.html">Developments</a></li>
-      <li><a href="sustainability.html" aria-current="page">Sustainability</a></li>
-      <li><a href="contact.html">Contact us</a></li>
+      <li><a href="sustainability.html">Sustainability</a></li>
+      <li><a href="contact.html" aria-current="page">Contact us</a></li>
     </ul>
   </nav>
 </div>
@@ -194,34 +194,61 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
 
 <section class="hero small">
   <div class="wrap">
-    <p class="eyebrow">Sustainability</p>
-    <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Efficient by design.</h1>
-    <p>Sustainability isn't a feature we add at the end — it's built into how our homes are designed, constructed and lived in.</p>
+    <p class="eyebrow">Contact us</p>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Let's talk homes.</h1>
+    <p>Enquire about a current development, register interest in an upcoming release, or just ask a question — we'll come back to you promptly.</p>
   </div>
 </section>
 
 <section>
-  <div class="wrap prose rv">
-    <h2>Fabric first</h2>
-    <p>The most reliable way to make a home efficient is to get the building itself right. Our homes are designed fabric-first: high levels of insulation, airtight construction and quality glazing that keep warmth in and running costs down — before any technology is added.</p>
-
-    <h2>Energy &amp; heating</h2>
-    <p>Every home is built to deliver strong energy performance from day one, which means lower bills for the people who live there and a smaller footprint over the life of the home.</p>
-
-    <h2>Materials &amp; waste</h2>
-    <p>We work with trusted local suppliers and trades wherever we can, choose materials for durability as well as appearance, and manage waste carefully on site throughout the build.</p>
-
-    <h2>Places for people</h2>
-    <p>A sustainable development is one people want to stay in. We plan our sites around green space, safe streets and easy connections to schools, shops and transport — so the homes we build become communities that last.</p>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap rv">
-    <p class="eyebrow">Better to live in, cheaper to run</p>
-    <h2>See it in our developments</h2>
-    <p>Every current Rock Homes development is built to these standards. Take a look at what's available now and what's coming next.</p>
-    <div class="cta-row"><a class="btn solid" href="developments.html">View developments</a></div>
+  <div class="wrap contact-grid">
+    <div class="contact-info rv">
+      <p class="eyebrow" style="margin-bottom:18px">Get in touch</p>
+      <div class="item">
+        <strong>Email</strong>
+        <a href="mailto:info@rockhomesni.co.uk">info@rockhomesni.co.uk</a>
+      </div>
+      <div class="item">
+        <strong>Phone</strong>
+        <a href="tel:+447760666512">07760 666512</a>
+      </div>
+      <div class="item">
+        <strong>Service area</strong>
+        <span>Northern Ireland</span>
+      </div>
+      <p style="margin-top:28px">Rock Homes is an NHBC registered home builder. Every home we build is protected by NHBC's 10-year Buildmark warranty.</p>
+    </div>
+    <div class="rv">
+      <form id="contact-form" action="https://formspree.io/f/REPLACE_WITH_ENDPOINT" method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option>The Paddocks, Carrowdore</option>
+            <option>Upcoming releases</option>
+            <option>A general enquiry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="btn dark solid" type="submit" style="cursor:pointer">Send message</button>
+        <p class="form-note" id="form-ok" role="status">Thanks — your message has been sent. We'll be in touch soon.</p>
+        <p class="form-note" id="form-err" role="alert">Something went wrong sending your message. Please try again, or email us directly at info@rockhomesni.co.uk.</p>
+      </form>
+    </div>
   </div>
 </section>
 </main>
@@ -251,6 +278,19 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
 </div>
 </footer>
 <script>
+var f=document.getElementById('contact-form');
+if(f){f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=f.querySelector('button[type=submit]');
+  var ok=document.getElementById('form-ok'),err=document.getElementById('form-err');
+  ok.classList.remove('show');err.classList.remove('show');
+  btn.disabled=true;var orig=btn.textContent;btn.textContent='Sending…';btn.style.opacity='.6';
+  fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
+    .then(function(r){ if(r.ok){ f.reset(); ok.classList.add('show'); } else { err.classList.add('show'); } })
+    .catch(function(){ err.classList.add('show'); })
+    .finally(function(){ btn.disabled=false;btn.textContent=orig;btn.style.opacity=''; });
+});}
+
 document.querySelector('.burger').addEventListener('click',function(){
   var n=document.getElementById('nav-links');
   var open=n.classList.toggle('open');
