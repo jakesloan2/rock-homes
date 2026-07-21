@@ -30,7 +30,10 @@
   "areaServed": [
     {"@type": "Country", "name": "United Kingdom"},
     {"@type": "AdministrativeArea", "name": "Northern Ireland"},
-    {"@type": "City", "name": "Belfast"}
+    {"@type": "City", "name": "Belfast"},
+    {"@type": "City", "name": "Bangor"},
+    {"@type": "City", "name": "Newtownards"},
+    {"@type": "AdministrativeArea", "name": "Ards Peninsula"}
   ],
   "logo": "https://jakesloan2.github.io/rock-homes/images/rock-homes-logo.png"
 }
@@ -124,6 +127,13 @@ section{padding:96px 0}
 .dev-body p{color:var(--stone);font-size:.98rem;flex:1}
 .dev-link{margin-top:22px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);align-self:flex-start;padding-bottom:4px}
 
+/* house types */
+.ht-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-2)}
+.ht-links{margin-top:22px;display:flex;gap:22px;flex-wrap:wrap}
+.ht-links a{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:4px}
+.spec-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 32px;margin-top:34px;padding:0;list-style:none}
+.spec-list li{position:relative;padding-left:26px;color:var(--stone)}
+.spec-list li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:10px;background:var(--accent);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
 /* dark band (NHBC / CTA) */
 .band{background:linear-gradient(160deg,var(--accent),var(--accent-deep));color:#fff;padding:90px 0}
 .band h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:14px 0 18px}
@@ -251,7 +261,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <p class="dev-loc">Carrowdore, County Down</p>
           <span class="dev-status">Now taking registrations of interest</span>
           <p>A collection of three and four bedroom detached and semi-detached homes in a village setting — traditional brick exteriors, energy-efficient construction and gardens made for family life.</p>
-          <a class="dev-link" href="developments.html">Read more</a>
+          <a class="dev-link" href="the-paddocks.html">Explore The Paddocks</a>
         </div>
       </article>
       <article class="dev-card rv">
