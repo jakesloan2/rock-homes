@@ -235,11 +235,23 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">We couldn't find that page</h1>
     <p style="margin:0 auto">The page you were looking for may have moved or no longer exists. Let's get you back on track.</p>
     <div class="cta-row" style="justify-content:center">
-      <a class="btn solid" href="/index.html">Back to home</a>
-      <a class="btn ghost" href="/the-paddocks.html">View The Paddocks</a>
+      <a class="btn solid" id="err-home" href="/">Back to home</a>
+      <a class="btn ghost" id="err-paddocks" href="/the-paddocks.html">View The Paddocks</a>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  // On GitHub Pages the site lives under /rock-homes/; on a custom domain it's at root.
+  // Detect the base by taking everything before the first path segment that isn't the repo folder.
+  var parts = location.pathname.split('/').filter(Boolean);
+  var base = (parts.length && location.hostname.endsWith('github.io')) ? '/' + parts[0] + '/' : '/';
+  var h = document.getElementById('err-home');
+  var p = document.getElementById('err-paddocks');
+  if(h) h.setAttribute('href', base);
+  if(p) p.setAttribute('href', base + 'the-paddocks.html');
+})();
+</script>
 </main>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Floor plan viewer" hidden>
   <button class="lb-close" id="lb-close" aria-label="Close floor plan">&times;</button>
@@ -264,6 +276,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     <div class="foot-contact">
       <p><a href="tel:+447760666512">07760 666512</a></p>
       <p style="margin-top:10px"><a href="mailto:info@rockhomesni.co.uk">info@rockhomesni.co.uk</a></p>
+      <p style="margin-top:10px">4 Brompton Road, Bangor,<br>County Down, BT20 3RE</p>
       <p style="margin-top:10px">NHBC registered home builder</p>
     </div>
   </div>
