@@ -14,7 +14,8 @@
 <meta property="og:image" content="https://jakesloan2.github.io/rock-homes/images/rock-homes-og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index, follow">
-<link rel="icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
@@ -66,12 +67,17 @@ footer .lockup-word{background:var(--accent-deep)}
 .nav-links{display:flex;gap:34px;list-style:none}
 .nav-links a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85;padding:6px 0;border-bottom:2px solid transparent;transition:opacity .2s,border-color .2s}
 .nav-links a:hover,.nav-links a[aria-current]{opacity:1;border-color:var(--accent);color:var(--accent)}
+.nav-tel a{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff !important;border:0 !important;opacity:1 !important;padding:11px 18px !important;border-radius:2px;letter-spacing:.12em}
+.nav-tel a:hover{background:var(--accent-deep)}
+.nav-tel svg{flex:none}
 .burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:8px}
 .burger svg{display:block}
 @media(max-width:820px){
   .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(27,28,31,.08)}
   .nav-links.open{display:flex}
   .nav-links a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav-tel{margin-top:12px}
+  .nav-tel a{justify-content:center;border-bottom:0 !important;padding:16px !important}
   .burger{display:block}
 }
 
@@ -112,9 +118,15 @@ section{padding:96px 0}
 /* development cards */
 .dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:52px}
 @media(max-width:820px){.dev-grid{grid-template-columns:1fr}}
-.dev-card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.dev-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(23,24,27,.12)}
-.dev-media{position:relative;aspect-ratio:16/10;background-size:cover;background-position:center}
+.dev-card{position:relative;background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden}
+.dev-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
+.dev-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(23,24,27,.16);border-color:transparent}
+.dev-card:hover::after{transform:scaleX(1)}
+.dev-media{position:relative;aspect-ratio:16/10;background-size:cover;background-position:center;overflow:hidden}
+.dev-media img{transition:transform .5s ease}
+.dev-card:hover .dev-media img{transform:scale(1.05)}
+.dev-badge{transition:transform .3s ease}
+.dev-card:hover .dev-badge{transform:translateY(-2px)}
 .dev-badge{position:absolute;top:18px;left:18px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;padding:9px 14px}
 .dev-body{padding:30px 30px 34px;display:flex;flex-direction:column;flex:1}
 .dev-body h3{font-size:1.5rem;margin-bottom:6px}
@@ -124,8 +136,12 @@ section{padding:96px 0}
 
 /* house types */
 .ht-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-2)}
-.ht-links{margin-top:22px;display:flex;gap:22px;flex-wrap:wrap}
-.ht-links a{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:4px}
+.ht-links{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ht-links a{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+.ht-links .primary{background:var(--accent);color:#fff;padding:13px 20px;border:2px solid var(--accent)}
+.ht-links .primary:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
+.ht-links .secondary{color:var(--accent);border-bottom:2px solid transparent;padding-bottom:3px}
+.ht-links .secondary:hover{border-color:var(--accent)}
 .spec-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 32px;margin-top:34px;padding:0;list-style:none}
 .spec-list li{position:relative;padding-left:26px;color:var(--stone)}
 .spec-list li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:10px;background:var(--accent);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
@@ -179,6 +195,17 @@ body.menu-open{overflow:hidden}
 .dev-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .dev-status{display:inline-block;margin:0 0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:7px 12px}
 form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231b1c1f' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(17,18,21,.94);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .25s}
+.lb[hidden]{display:none}
+.lb.open{opacity:1}
+.lb-fig{margin:0;max-width:1100px;max-height:92vh;display:flex;flex-direction:column;align-items:center}
+.lb-fig img{max-width:100%;max-height:84vh;object-fit:contain;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb-fig figcaption{margin-top:16px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+.lb-close{position:absolute;top:20px;right:24px;width:48px;height:48px;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:2rem;line-height:1;cursor:pointer;border-radius:50%;transition:background .2s}
+.lb-close:hover{background:rgba(255,255,255,.22)}
+@media(prefers-reduced-motion:reduce){.lb{transition:none}}
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
@@ -207,6 +234,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
       <li><a href="developments.html" aria-current="page">Developments</a></li>
       <li><a href="sustainability.html">Sustainability</a></li>
       <li><a href="contact.html">Contact us</a></li>
+      <li class="nav-tel"><a href="tel:+447760666512" aria-label="Call Rock Homes on 07760 666512"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2 2A16 16 0 014.5 5a2 2 0 012-2z" fill="currentColor"/></svg>07760 666512</a></li>
     </ul>
   </nav>
 </div>
@@ -256,8 +284,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom semi-detached</span><span>1,169 sq ft approx.</span></div>
           <p>Kitchen, dining and family space running across the rear, a separate lounge, and three well-proportioned bedrooms including a principal bedroom with ensuite. Sites 65, 66 &amp; 67.</p>
           <div class="ht-links">
-            <a href="images/paddocks-brompton-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-brompton-plan.jpg" data-lightbox="images/paddocks-brompton-plan.jpg" data-title="The Brompton — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -271,8 +299,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom detached</span><span>1,150 sq ft approx.</span></div>
           <p>A detached family home with open-plan kitchen, dining and family area, separate lounge, and principal bedroom with ensuite — with the option of a garden room opening off the kitchen.</p>
           <div class="ht-links">
-            <a href="images/paddocks-benn-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-benn-plan.jpg" data-lightbox="images/paddocks-benn-plan.jpg" data-title="The Benn — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -286,8 +314,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom semi-detached</span><span>1,169 sq ft approx.</span></div>
           <p>Generous kitchen, dining and family space to the rear, a bright front lounge, and three bedrooms upstairs including an ensuite principal bedroom.</p>
           <div class="ht-links">
-            <a href="images/paddocks-mulholland-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-mulholland-plan.jpg" data-lightbox="images/paddocks-mulholland-plan.jpg" data-title="The Mulholland — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -301,8 +329,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom detached</span><span>1,172 sq ft approx.</span></div>
           <p>A detached home with a large lounge, kitchen/dining space, separate utility and downstairs WC, plus an ensuite and dressing space to the principal bedroom.</p>
           <div class="ht-links">
-            <a href="images/paddocks-grainger-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-grainger-plan.jpg" data-lightbox="images/paddocks-grainger-plan.jpg" data-title="The Grainger — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -316,8 +344,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>4 bedroom semi-detached</span><span>1,300 sq ft approx.</span></div>
           <p>The largest home at The Paddocks — four bedrooms, utility room, ensuite principal bedroom and an optional garden room. Sites 68 &amp; 69.</p>
           <div class="ht-links">
-            <a href="images/paddocks-mullins-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-mullins-plan.jpg" data-lightbox="images/paddocks-mullins-plan.jpg" data-title="The Mullins — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -331,8 +359,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom detached</span><span>1,172 sq ft approx.</span></div>
           <p>A detached home with lounge, kitchen/dining, utility and WC on the ground floor, and an ensuite principal bedroom above. Sites 62 &amp; 63.</p>
           <div class="ht-links">
-            <a href="images/paddocks-eustace-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-eustace-plan.jpg" data-lightbox="images/paddocks-eustace-plan.jpg" data-title="The Eustace — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -346,8 +374,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
           <div class="ht-meta"><span>3 bedroom semi-detached</span><span>1,087 sq ft approx.</span></div>
           <p>A smartly planned semi-detached home with kitchen, dining and family space, utility, and a principal bedroom with both dressing area and ensuite.</p>
           <div class="ht-links">
-            <a href="images/paddocks-macneice-plan.jpg" target="_blank" rel="noopener">View floor plan</a>
-            <a href="contact.html">Register interest</a>
+            <a class="secondary" href="images/paddocks-macneice-plan.jpg" data-lightbox="images/paddocks-macneice-plan.jpg" data-title="The MacNeice — floor plan">View floor plan</a>
+            <a class="primary" href="contact.html">Register interest</a>
           </div>
         </div>
       </article>
@@ -383,6 +411,13 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
   </div>
 </section>
 </main>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Floor plan viewer" hidden>
+  <button class="lb-close" id="lb-close" aria-label="Close floor plan">&times;</button>
+  <figure class="lb-fig">
+    <img id="lb-img" src="" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
 <footer>
 <div class="wrap">
   <div class="foot-top">
@@ -423,6 +458,31 @@ if('IntersectionObserver' in window){
 }else{
   document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
 }
+
+(function(){
+  var lb=document.getElementById('lb');
+  if(!lb) return;
+  var img=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),closeBtn=document.getElementById('lb-close');
+  var lastFocus=null;
+  function open(src,title){
+    lastFocus=document.activeElement;
+    img.src=src; img.alt=title||'Floor plan'; cap.textContent=title||'';
+    lb.hidden=false; requestAnimationFrame(function(){lb.classList.add('open');});
+    document.body.classList.add('menu-open'); closeBtn.focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    setTimeout(function(){lb.hidden=true; img.src='';},250);
+    document.body.classList.remove('menu-open');
+    if(lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-lightbox]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();open(a.getAttribute('data-lightbox'),a.getAttribute('data-title'));});
+  });
+  closeBtn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+})();
 </script>
 </body>
 </html>
