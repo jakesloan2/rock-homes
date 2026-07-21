@@ -159,6 +159,7 @@ form label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.74rem;
 form input,form textarea,form select{width:100%;padding:15px 16px;border:1px solid var(--line);background:var(--white);font:inherit;color:var(--ink)}
 form input:focus,form textarea:focus,form select:focus{outline:2px solid var(--accent);outline-offset:1px}
 form textarea{min-height:150px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-note{display:none;margin-top:18px;padding:16px 18px;border:1px solid var(--accent);font-size:.95rem}
 .form-note.show{display:block}
 
@@ -173,6 +174,7 @@ footer{background:var(--accent-deep);color:#fff;padding:70px 0 40px}
 .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:28px;color:rgba(255,255,255,.55);font-size:.85rem}
 .foot-bottom a{border-bottom:1px solid transparent}
 .foot-bottom a:hover{border-color:rgba(255,255,255,.4)}
+.foot-legal a{margin:0 2px}
 
 .skip{position:absolute;top:-60px;left:16px;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:top .2s}
 .skip:focus{top:12px}
@@ -255,6 +257,10 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     </div>
     <div class="rv">
       <form id="contact-form" action="https://formspree.io/f/REPLACE_WITH_ENDPOINT" method="POST">
+        <div class="hp" aria-hidden="true">
+          <label for="company-website">Leave this field blank</label>
+          <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required autocomplete="name">
@@ -315,7 +321,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
   </div>
   <div class="foot-bottom">
     <span>&copy; 2026 Rock Homes. All rights reserved.</span>
-    <span><a href="https://apexdesignni.co.uk" rel="noopener">Site by apex.</a></span>
+    <span class="foot-legal"><a href="privacy.html">Privacy &amp; Cookies</a> <span aria-hidden="true">·</span> <a href="https://apexdesignni.co.uk" rel="noopener">Site by apex.</a></span>
   </div>
 </div>
 </footer>
@@ -323,6 +329,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
 var f=document.getElementById('contact-form');
 if(f){f.addEventListener('submit',function(e){
   e.preventDefault();
+  var hp=f.querySelector('input[name="_gotcha"]');
+  if(hp&&hp.value){ f.reset(); return; }
   var btn=f.querySelector('button[type=submit]');
   var ok=document.getElementById('form-ok'),err=document.getElementById('form-err');
   ok.classList.remove('show');err.classList.remove('show');
