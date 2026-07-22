@@ -273,17 +273,37 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
   </div>
 </section>
 
+
 <section style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv"><p class="eyebrow">Gallery</p><h2>Inside &amp; out</h2></div>
-    <div class="gallery feature">\n      <button type="button" data-lightbox="images/tides-street.jpg" data-title="Street scene of brick and render bungalows and homes at The Tides, Portavogie"><img src="images/tides-street.jpg" alt="Street scene of brick and render bungalows and homes at The Tides, Portavogie" loading="lazy"></button>\n      <button type="button" data-lightbox="images/tides-bungalow.jpg" data-title="Detached brick bungalow with dormer windows at The Tides, Portavogie"><img src="images/tides-bungalow.jpg" alt="Detached brick bungalow with dormer windows at The Tides, Portavogie" loading="lazy"></button>\n      <button type="button" data-lightbox="images/tides-kitchen.jpg" data-title="Modern navy shaker kitchen with wood worktops in a completed home at The Tides"><img src="images/tides-kitchen.jpg" alt="Modern navy shaker kitchen with wood worktops in a completed home at The Tides" loading="lazy"></button>\n      <button type="button" data-lightbox="images/tides-bathroom.jpg" data-title="Contemporary bathroom with freestanding bath and slate tiling at The Tides"><img src="images/tides-bathroom.jpg" alt="Contemporary bathroom with freestanding bath and slate tiling at The Tides" loading="lazy"></button>\n      <button type="button" data-lightbox="images/the-tides.jpg" data-title="Overview of The Tides completed coastal development"><img src="images/the-tides.jpg" alt="Overview of The Tides completed coastal development" loading="lazy"></button>\n    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head rv">
+<p class="eyebrow">Featured Development</p>
+<h2>Explore The Tides</h2>
+</div>
+
+<div class="dev-grid">
+<div class="dev-card">
+<div class="dev-media">
+<img src="images/tides-street.jpg" alt="The Tides street scene">
+</div>
+<div class="dev-body">
+<span class="dev-status">Completed Development</span>
+<h3>Discover The Tides</h3>
+<p>Explore a selection of photography showcasing the homes, interiors and craftsmanship throughout this completed coastal development.</p>
+<div class="ht-links">
+<a href="#" class="primary" id="openGallery">View Photography</a>
+</div>
+</div>
+</div>
+</div>
+
+</div>
 </section>
 
-
 <section>
-  <div class="wrap rv">
-    <div class="sec-head">
+<div class="wrap rv">
+<div class="sec-head">
+
       <p class="eyebrow">Specification</p>
       <h2>Built with lasting quality</h2>
       <p class="lead">Every home at The Tides was finished to the high standards that define every Rock Homes development.</p>
@@ -381,6 +401,26 @@ if('IntersectionObserver' in window){
   closeBtn.addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+
+const gallery=[
+['images/tides-street.jpg','Street Scene'],
+['images/tides-bungalow.jpg','Detached Bungalow'],
+['images/tides-kitchen.jpg','Kitchen'],
+['images/tides-bathroom.jpg','Bathroom'],
+['images/the-tides.jpg','Overview']
+];
+let idx=0;
+function show(i){idx=(i+gallery.length)%gallery.length;open(gallery[idx][0],gallery[idx][1]);}
+const btn=document.getElementById('openGallery');
+if(btn){
+ btn.addEventListener('click',e=>{e.preventDefault();show(0);});
+}
+document.addEventListener('keydown',e=>{
+ if(lb.hidden)return;
+ if(e.key==='ArrowRight')show(idx+1);
+ if(e.key==='ArrowLeft')show(idx-1);
+});
+
 })();
 </script>
 </body>
