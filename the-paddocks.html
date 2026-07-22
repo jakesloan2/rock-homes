@@ -127,6 +127,9 @@ section{padding:96px 0}
 .dev-card:hover .dev-media img{transform:scale(1.05)}
 .dev-badge{transition:transform .3s ease}
 .dev-card:hover .dev-badge{transform:translateY(-2px)}
+.dev-card--link{cursor:pointer}
+.dev-stretch::after{content:"";position:absolute;inset:0;z-index:1}
+.dev-card--link .dev-body a:not(.dev-stretch){position:relative;z-index:2}
 .dev-badge{position:absolute;top:18px;left:18px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;padding:9px 14px}
 .dev-body{padding:30px 30px 34px;display:flex;flex-direction:column;flex:1}
 .dev-body h3{font-size:1.5rem;margin-bottom:6px}
@@ -189,6 +192,8 @@ footer{background:var(--accent-deep);color:#fff;padding:70px 0 40px}
 .foot-bottom a{border-bottom:1px solid transparent}
 .foot-bottom a:hover{border-color:rgba(255,255,255,.4)}
 .foot-legal a{margin:0 2px}
+.apex-credit{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:.06em;color:#6ea0cc;transition:color .2s}
+.foot-legal a:hover .apex-credit{color:#8fbce4}
 
 .skip{position:absolute;top:-60px;left:16px;z-index:100;background:var(--ink);color:#fff;padding:12px 20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:top .2s}
 .skip:focus{top:12px}
@@ -198,6 +203,23 @@ body.menu-open{overflow:hidden}
 .dev-status{display:inline-block;margin:0 0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:7px 12px}
 form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231b1c1f' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
 
+/* gallery grid */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+@media(max-width:820px){.gallery{grid-template-columns:1fr 1fr;gap:12px}}
+.gallery button{padding:0;border:0;cursor:pointer;background:none;aspect-ratio:4/3;overflow:hidden;position:relative}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery button:hover img{transform:scale(1.06)}
+.gallery.feature > :first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+@media(max-width:820px){.gallery.feature > :first-child{grid-column:span 2}}
+/* awards */
+.award-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+@media(max-width:820px){.award-hero{grid-template-columns:1fr;gap:28px}}
+.award-hero img{width:100%;border:1px solid var(--line)}
+.award-badge{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:11px 18px;margin-bottom:22px}
+.stat-row{display:flex;gap:44px;flex-wrap:wrap;margin-top:40px}
+.stat{flex:1;min-width:160px}
+.stat .num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,2.8rem);color:var(--accent);line-height:1}
+.stat .lbl{color:var(--stone);font-size:.95rem;margin-top:8px}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:200;background:rgba(17,18,21,.94);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .25s}
 .lb[hidden]{display:none}
@@ -234,6 +256,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     <ul class="nav-links" id="nav-links">
       <li><a href="about.html">About</a></li>
       <li><a href="developments.html" aria-current="page">Developments</a></li>
+      <li><a href="awards.html">Awards</a></li>
       <li><a href="sustainability.html">Sustainability</a></li>
       <li><a href="contact.html">Contact us</a></li>
       <li class="nav-tel"><a href="tel:+447760666512" aria-label="Call Rock Homes on 07760 666512"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2 2A16 16 0 014.5 5a2 2 0 012-2z" fill="currentColor"/></svg>07760 666512</a></li>
@@ -430,6 +453,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
     <ul class="foot-nav">
       <li><a href="about.html">About</a></li>
       <li><a href="developments.html">Developments</a></li>
+      <li><a href="awards.html">Awards</a></li>
       <li><a href="sustainability.html">Sustainability</a></li>
       <li><a href="contact.html">Contact us</a></li>
     </ul>
@@ -442,7 +466,7 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
   </div>
   <div class="foot-bottom">
     <span>&copy; 2026 Rock Homes. All rights reserved.</span>
-    <span class="foot-legal"><a href="privacy.html">Privacy &amp; Cookies</a> <span aria-hidden="true">·</span> <a href="https://apexdesignni.co.uk" rel="noopener">Site by apex.</a></span>
+    <span class="foot-legal"><a href="privacy.html">Privacy &amp; Cookies</a> <span aria-hidden="true">·</span> <a href="https://apexdesignni.co.uk" rel="noopener">Website by <span class="apex-credit">APEX.</span></a></span>
   </div>
 </div>
 </footer>
