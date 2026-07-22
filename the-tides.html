@@ -226,6 +226,13 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
 }
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </style>
+
+<link rel="preload" as="image" href="images/tides-street.jpg">
+<link rel="preload" as="image" href="images/tides-bungalow.jpg">
+<link rel="preload" as="image" href="images/tides-kitchen.jpg">
+<link rel="preload" as="image" href="images/tides-bathroom.jpg">
+<link rel="preload" as="image" href="images/the-tides.jpg">
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -288,8 +295,8 @@ form select{appearance:none;-webkit-appearance:none;background-image:url("data:i
 </div>
 <div class="dev-body">
 <span class="dev-status">Completed Development</span>
-<h3>Discover The Tides</h3>
-<p>Explore a selection of photography showcasing the homes, interiors and craftsmanship throughout this completed coastal development.</p>
+<h3>Explore The Development</h3>
+<p>Discover a curated collection of photography showcasing the homes, interiors and craftsmanship throughout The Tides.</p>
 <div class="ht-links">
 <a href="#" class="primary" id="openGallery">View Photography</a>
 </div>
@@ -403,12 +410,19 @@ if('IntersectionObserver' in window){
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
 
 const gallery=[
+
 ['images/tides-street.jpg','Street Scene'],
 ['images/tides-bungalow.jpg','Detached Bungalow'],
 ['images/tides-kitchen.jpg','Kitchen'],
 ['images/tides-bathroom.jpg','Bathroom'],
 ['images/the-tides.jpg','Overview']
 ];
+
+gallery.forEach(g=>{
+ const i=new Image();
+ i.src=g[0];
+});
+
 let idx=0;
 function show(i){idx=(i+gallery.length)%gallery.length;open(gallery[idx][0],gallery[idx][1]);}
 const btn=document.getElementById('openGallery');
